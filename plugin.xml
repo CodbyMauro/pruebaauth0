@@ -17,16 +17,13 @@
             <include src="src/android/dependencies.gradle" />
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/*">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <uses-permission android:name="android.permission.INTERNET" />
         </config-file>
 
         <source-file src="src/android/Auth0Cordova.java" target-dir="src/com/example/auth0" />
     </platform>
 
-    <platform name="ios">
-        <source-file src="src/ios/Auth0Cordova.m" />
-    </platform>
 
     <!-- JS interface -->
     <js-module src="www/auth0-cordova.js" name="Auth0Cordova">

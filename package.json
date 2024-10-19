@@ -5,8 +5,7 @@
   "cordova": {
     "id": "com.example.auth0",
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   },
   "keywords": [
