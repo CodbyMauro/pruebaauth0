@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-auth0",
+  "version": "1.0.0",
+  "description": "Cordova plugin for Auth0",
+  "cordova": {
+    "id": "com.example.auth0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "auth0",
+    "authentication"
+  ],
+  "engines": {
+    "cordovaDependencies": {
+      "6.0.0": {
+        "cordova-android": ">=6.0.0",
+        "cordova-ios": ">=4.0.0"
+      }
+    }
+  },
+  "author": "Tu nombre",
+  "license": "MIT"
+}

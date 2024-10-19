@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.example.auth0" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Auth0CordovaPlugin</name>
+    <description>Auth0 Cordova Plugin for integrating authentication into mobile apps</description>
+    <license>MIT</license>
+    <keywords>auth0, cordova, authentication</keywords>
+    <engines>
+        <engine name="cordova" version=">=6.0.0" />
+    </engines>
+
+    <platform name="android">
+        <!-- Agregar valores a strings.xml -->
+        <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
+
+        <!-- Insertar configuración en build.gradle -->
+        <config-file target="app/build.gradle" parent="android">
+            <compileOptions>
+                <sourceCompatibility>JavaVersion.VERSION_1_8</sourceCompatibility>
+                <targetCompatibility>JavaVersion.VERSION_1_8</targetCompatibility>
+            </compileOptions>
+            <kotlinOptions>
+                <jvmTarget>1.8</jvmTarget>
+            </kotlinOptions>
+        </config-file>
+
+        <config-file target="app/build.gradle" parent="dependencies">
+            <dependency>
+                <groupId>com.auth0.android</groupId>
+                <artifactId>auth0</artifactId>
+                <version>3.0.0-beta.0</version>
+            </dependency>
+        </config-file>
+
+        <!-- Agregar permiso de Internet al AndroidManifest -->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <!-- Agregar manifestPlaceholders -->
+        <config-file target="app/build.gradle" parent="defaultConfig">
+            <manifestPlaceholders>
+                <auth0Domain>@string/com_auth0_domain</auth0Domain>
+                <auth0Scheme>https</auth0Scheme>
+            </manifestPlaceholders>
+        </config-file>
+
+        <source-file src="src/android/Auth0Cordova.java" target-dir="src/com/example/auth0" />
+    </platform>
+
+    <platform name="ios">
+        <source-file src="src/ios/Auth0Cordova.m" />
+    </platform>
+
+    <!-- JS interface -->
+    <js-module src="www/auth0-cordova.js" name="Auth0Cordova">
+        <clobbers target="cordova.plugins.Auth0Cordova" />
+    </js-module>
+</plugin>
