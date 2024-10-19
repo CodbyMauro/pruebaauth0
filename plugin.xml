@@ -9,39 +9,16 @@
     </engines>
 
     <platform name="android">
-        <!-- Agregar valores a strings.xml -->
-        <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
-
-        <!-- Insertar configuración en build.gradle -->
         <config-file target="app/build.gradle" parent="android">
-            <compileOptions>
-                <sourceCompatibility>JavaVersion.VERSION_1_8</sourceCompatibility>
-                <targetCompatibility>JavaVersion.VERSION_1_8</targetCompatibility>
-            </compileOptions>
-            <kotlinOptions>
-                <jvmTarget>1.8</jvmTarget>
-            </kotlinOptions>
+            <include src="src/android/build.gradle" />
         </config-file>
 
         <config-file target="app/build.gradle" parent="dependencies">
-            <dependency>
-                <groupId>com.auth0.android</groupId>
-                <artifactId>auth0</artifactId>
-                <version>3.0.0-beta.0</version>
-            </dependency>
+            <include src="src/android/dependencies.gradle" />
         </config-file>
 
-        <!-- Agregar permiso de Internet al AndroidManifest -->
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.INTERNET" />
-        </config-file>
-
-        <!-- Agregar manifestPlaceholders -->
-        <config-file target="app/build.gradle" parent="defaultConfig">
-            <manifestPlaceholders>
-                <auth0Domain>@string/com_auth0_domain</auth0Domain>
-                <auth0Scheme>https</auth0Scheme>
-            </manifestPlaceholders>
         </config-file>
 
         <source-file src="src/android/Auth0Cordova.java" target-dir="src/com/example/auth0" />
